@@ -34,12 +34,13 @@ You are working on {{issue.title}} for the {{tracker.repo}} repository.
 {{issue.description}}
 
 ## Instructions
-1. Read the codebase to understand the existing architecture
-2. Implement the feature/fix described in the task
-3. Run the test suite and ensure all tests pass
-4. Run the linter and ensure it passes
-5. If tests and lint pass, commit your changes with a descriptive message
-6. If tests fail, fix them. If you can't fix them after 3 attempts, stop and output the failure logs.
+1. Read CLAUDE.md to understand the project, stack, and conventions
+2. Run the test suite BEFORE writing any code to confirm existing tests pass
+3. Implement the feature/fix described in the task
+4. Run EVERY command in the CLAUDE.md "## Verify" section — these are non-negotiable build checks that prove the project actually works, not just that the code looks correct to a reader
+5. Run the full pre-commit check chain from CLAUDE.md: test, lint, typecheck, verify
+6. Only commit if ALL checks pass
+7. If verify or tests fail, fix the issue. If you can't fix after 3 attempts, stop and output the failure logs.
 
 Do not ask for clarification. Work with the spec as given.
 Do not create unnecessary files or add features beyond what's specified.

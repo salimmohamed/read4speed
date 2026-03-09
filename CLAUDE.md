@@ -29,7 +29,14 @@ Two screens connected by React Navigation native-stack:
 - `src/contexts/` — React contexts (theme, language)
 - `src/__tests__/` — test files
 
+## Verify
+- Build: `npx expo export 2>&1 | head -20` (catches missing config, broken imports, bad asset refs)
+
+## Pre-commit Checks
+`bun test && bun run lint && bun run typecheck && npx expo export 2>&1 | head -20`
+
 ## Conventions
+- NativeWind v4 requires BOTH `metro.config.js` (`withNativeWind`) AND `babel.config.js` (`nativewind/babel` preset). If one is missing, styles silently fail.
 - Use NativeWind `className` for styling, never `StyleSheet.create`
 - Named exports everywhere, no default exports
 - Biome for linting/formatting — never Prettier or ESLint
@@ -44,4 +51,4 @@ Two screens connected by React Navigation native-stack:
 - Never add Co-Authored-By lines
 - Stage specific files, never `git add -A`
 
-Run `bun lint && bun typecheck` before committing.
+Run the full pre-commit check chain: `bun test && bun run lint && bun run typecheck && npx expo export 2>&1 | head -20`
